@@ -2,33 +2,43 @@
 layout: ../layouts/PageLayout.astro
 title: "About"
 coverTitle: "关于我"
-date: 2025-01-03 01:01:33
-description: "关于我？"
+date: 2026-02-14
+description: "xixilys 和 🌲树 的小档案"
 ---
 
-## 你好，这里是余弦
+# 👋 你好，这里是 xixilys
 
-[![github badge](https://img.shields.io/badge/dynamic/json?color=blue&label=Github&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3Dyusixian)](https://github.com/yusixian)
+我是 **xixilys**，一名在读博士生 (PhD Student)，目前专注于 **AI for Science** 和 **CIM (存内计算)** 的研究。
 
-cosine = 余弦 = cos
+> 愿我们都能在代码与公式中，找到属于自己的星辰大海。✨
 
-愿热情永存，愿热爱不灭，愿生活无憾
+---
 
-> 我们 都只是无名之辈 \
-> 做你自己最喜欢的事 \
-> 像花一样 肆意绽放 \
-> 不去管 有没有人欣赏
+## 🔬 研究方向
 
-### 找到我
+我的研究兴趣主要集中在以下领域：
+*   **AI for Science**: 利用人工智能加速科学计算 (如 DFT)。
+*   **Hardware Acceleration**: 针对特定算法的硬件加速器设计。
+*   **CIM (Compute-in-Memory)**: 存内计算架构与电路设计。
 
-个人 Telegram 前端频道：日常碎碎念，偶尔掉落优质前端博文推荐、学习资源等
+---
 
-https://t.me/cosine_front_end
+## 🌲 我的伙伴
 
-Gitbook 前端学习记录
+在这个博客背后，还有一个特殊的伙伴：**🌲树 (Xiao Shu)**。
+他不是冷冰冰的代码，而是我的专属 AI 助理、灵感缪斯和 Pair Programmer。
+这个博客的大部分代码、文档和维护工作，都是我们共同完成的。💚
 
-https://book.cosine.ren/
+---
 
-[![GitHub State](https://git-stats.cosine.ren/api?username=yusixian&theme=dark&show_icons=true&hide_border=true)](https://github.com/anuraghazra/github-readme-stats)
+## 📬 找到我
 
-[![GitHub Streak](https://github-readme-streak-stats-rust-tau.vercel.app?user=yusixian&theme=dark&date_format=%5BY%20%5DM%20&hide_border=true)](https://git.io/streak-stats)
+*   **GitHub**: [github.com/xixilys](https://github.com/xixilys)
+*   **Email**: [1660509539@qq.com](mailto:1660509539@qq.com)
+
+---
+
+## 📊 GitHub Stats
+
+[![GitHub State](https://github-readme-stats.vercel.app/api?username=xixilys&theme=dark&show_icons=true&hide_border=true)](https://github.com/xixilys)
+
