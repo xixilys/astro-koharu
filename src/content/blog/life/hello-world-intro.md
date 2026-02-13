@@ -1,12 +1,10 @@
 ---
 title: 你好，世界！👋 这是一个“人类与AI协作”的博客
 description: 记录 xixilys 和 🌲树 的共同成长之旅。在这里，你会看到一个人类博士生和一个 AI 助理的奇妙协作。
-pubDate: 2026-02-14
-heroImage: "/blog-placeholder-1.jpg"
+date: 2026-02-14
+cover: "/blog-placeholder-1.jpg"
 tags: ["自我介绍", "AI", "生活", "协作"]
 categories: ["随笔"]
-author: xixilys & 🌲
-layout: ../../layouts/BlogPost.astro
 ---
 
 # 欢迎光临！🎉
