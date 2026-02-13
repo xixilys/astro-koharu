@@ -1,67 +1,70 @@
 ---
-title: "告别手动搜论文：AgentArxiv 与 Citation Hunter 实战"
-description: "如何让 AI 每天自动追踪 arXiv 上的最新科研成果，并顺藤摸瓜找到引用的关键文献。"
+title: "AgentArxiv 与 Citation Hunter：我的论文自动化“狩猎”系统"
+description: "揭秘如何让 AI 每天自动追踪 arXiv 上的最新科研成果，并利用 Citation Hunter 顺藤摸瓜，构建庞大的本地文献库。"
 date: 2026-02-14
 cover: "/img/cover/6.webp"
 tags: ["科研", "AI", "AgentArxiv", "论文", "CitationHunter"]
 categories: ["科研工具"]
 ---
 
-# 📚 我的论文“狩猎”系统 (Paper Hunting System)
+# 📚 为什么要让 AI 帮我找论文？
 
-作为一个 PhD，每天读论文是基本功。但 arXiv 上的更新速度太快了，光是筛选标题就要花掉大半个上午。
-有没有办法让 AI 帮我**过滤垃圾论文**，只把真正有价值的送到我面前？
+大家好，我是 **xixilys**。
 
-答案是有的。这就是我要介绍的 **AgentArxiv** 和 **Citation Hunter**。
+作为一个 **AI for Science** 方向的 PhD，我每天面临的最大挑战之一就是 **信息过载**。
+*   arXiv 上每天有几百篇新论文，光是刷标题就要花半小时。
+*   读到一篇好论文，想把它的引用文献（References）全部找出来读，又是一项浩大的工程。
 
----
-
-## 🔍 痛点：手动搜索的低效
-
-传统的读论文流程：
-1.  打开 arXiv，搜 `DFT` 或 `CIM`。
-2.  肉眼扫描几十个标题，点进去看 Abstract。
-3.  觉得不错，下载 PDF。
-4.  读完发现它引用了一篇神作，又去搜那篇引用... (无限套娃)
-
-这太慢了！我们要把这个流程自动化。🚀
+为了解决这个问题，我和 **🌲树** 一起开发了一套 **“论文狩猎系统” (Paper Hunting System)**。
+这套系统由两个核心组件构成：**AgentArxiv** 和 **Citation Hunter**。
 
 ---
 
-## 🤖 解决方案 1：AgentArxiv (每日简报)
+## 🦅 组件一：AgentArxiv (每日自动追踪)
 
-我给我的 AI 助手 **🌲树** 配置了一个叫 `AgentArxiv` 的 Skill。
-它的工作原理很简单：
-1.  **关键词订阅**: 我设置好关键词 `Compute-in-Memory`, `DFT acceleration`, `AI for Science`。
-2.  **每日抓取**: 每天早上，它会自动去 arXiv 抓取最新的相关论文。
-3.  **智能筛选**: 它会调用 **Gemini 3.0 Pro** 读取每篇论文的摘要，判断是否真的跟我的研究方向契合。
-4.  **推送到 Discord**: 把筛选后的论文列表推送到我的 Discord 频道，并附上简短的中文摘要。
+**AgentArxiv** 是我的“前哨侦察兵”。它的任务是每天帮我盯着 arXiv，确保我不会错过任何一篇重要的相关论文。
 
-这样，我每天醒来只要看一眼 Discord，就能知道今天有哪些值得一读的新文章。📰
+### ⚙️ 工作原理
+1.  **关键词订阅**: 我设置了一组关键词，比如 `Compute-in-Memory`, `DFT acceleration`, `Graph Neural Networks`。
+2.  **每日抓取**: 每天早上 8 点，AgentArxiv 会自动运行，抓取 arXiv 上过去 24 小时发布的所有包含这些关键词的论文。
+3.  **AI 筛选**: 这是最关键的一步。它不仅仅是匹配关键词，还会调用 **Gemini 1.5 Pro** 阅读论文的摘要，判断它是否真的跟我的研究方向契合。
+    *   (比如，有些论文虽然提到了 DFT，但其实是讲通信的 Discrete Fourier Transform，而不是 Density Functional Theory。AI 一眼就能看出来并过滤掉。)
+4.  **推送到 Discord**: 最终筛选出来的“精华论文”，会以卡片的形式推送到我的 Discord 频道。
+
+### 📈 效果
+现在我每天只需要花 **5 分钟** 浏览一下 Discord，就能掌握当天的科研动态。遇到感兴趣的，直接点击链接下载 PDF。
 
 ---
 
-## 🕸️ 解决方案 2：Citation Hunter (顺藤摸瓜)
+## 🕸️ 组件二：Citation Hunter (深度挖掘)
 
-有时候读到一篇很好的综述，我想把里面提到的**关键引用文献**全部找出来读一遍。
-手动一篇篇搜太痛苦了！
+如果说 AgentArxiv 是“广度扫描”，那么 **Citation Hunter** 就是“深度挖掘”。
 
-所以我写了一个叫 `Citation Hunter` 的 Python 脚本，并把它集成到了 OpenClaw 里。
-现在的流程是：
-1.  我给 **🌲树** 发一篇 PDF 或 DOI。
-2.  它调用脚本，解析 PDF 里的参考文献列表。
-3.  利用 **Semantic Scholar API** 查询这些引用的被引数和相关性。
-4.  自动下载其中**高影响力**的 PDF 到我的本地库。
+### 🛠️ 痛点
+当你读到一篇“神作”时，通常会发现它引用了很多经典的底座论文，或者被很多后续工作引用。
+如果不把这些相关文献都读一遍，就很难建立起完整的知识图谱。
+
+### ⚙️ 工作原理
+我写了一个 Python 脚本 `citation_hunter.py`，并把它集成到了 OpenClaw 里。
+1.  **输入**: 我给 **🌲树** 发一篇论文的 PDF 或者 DOI。
+2.  **解析**: 它会自动解析出 PDF 里的参考文献列表 (References)。
+3.  **查询**: 利用 **Semantic Scholar API**，查询每一篇引用文献的元数据（引用量、发表年份、相关性）。
+4.  **下载**: 自动下载其中 **引用量最高** 或 **相关性最强** 的 PDF，并保存到我的本地文献库。
+
+### 💾 本地数据库
+这些下载下来的 PDF 会被自动整理到我的 **Obsidian** 知识库中。
+*   文件名自动规范化 (例如 `2024_Author_Title.pdf`)。
+*   自动生成一个 Markdown 笔记，包含摘要、作者、引用关系图。
 
 ---
 
 ## 📝 总结
 
-这套系统极大地解放了我的生产力。
-*   **AgentArxiv** 帮我做广度扫描 (Breadth)，不错过最新动态。
-*   **Citation Hunter** 帮我做深度挖掘 (Depth)，迅速构建知识图谱。
+这套 **“AgentArxiv + Citation Hunter”** 系统，极大地改变了我的科研方式。
+*   **以前**: 我是信息的**被动接收者**，被海量论文淹没。
+*   **现在**: 我是信息的**主动掌控者**，AI 帮我过滤噪声，让我只专注于最有价值的信号。
 
-这就是 AI 时代科研的新范式：把**找资料**这种重复劳动交给 AI，把**思考和创新**留给自己。💡
+这就是 **AI 增强科研 (AI-Enhanced Research)** 的魅力。💡
 
 ---
 
